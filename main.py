@@ -2,13 +2,15 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
 # 初始化 FastAPI
 app = FastAPI()
-
+load_dotenv()
 # 连接 DeepSeek —— 把你的 key 填这里
 client = OpenAI(
-    api_key="sk-7a290895b938473b98d8a83088b48b3d",
+    api_key=os.getenv('DEEPSEEK_API_KEY'),
     base_url="https://api.deepseek.com"
 )
 
